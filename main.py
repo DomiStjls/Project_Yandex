@@ -75,6 +75,31 @@ def image_mars():
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
         <h1 style="color: red;">Жди нас, Марс!</h1>
         <img src='./static/img/image_mars.png'>
+        <p>Вот она какая, красная планета.</p>
+
+
+        </body>
+        </html>
+        """
+@app.route("/promotion_image")
+def promotion_image():
+    return """
+    <!doctype html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+        crossorigin="anonymous">
+        <link rel="stylesheet" href="./static/css/style.css">
+        <title>Привет, Марс!</title>
+    </head>
+        <html lang="en">
+        <body>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <h1 style="color: red;">Жди нас, Марс!</h1>
+        <img src='./static/img/image_mars.png'>
         <p class='p1'>Человечество вырастает из детства.</p>
         <p class='p2'>Человечеству мала одна планета.</p>
         <p class='p3'>Мы сделаем обитаемыми безжизненные пока планеты.</p>
@@ -208,6 +233,3 @@ def form_sample():
         print(request.form["sex"])
         return "Форма отправлена"
 
-
-if __name__ == "__main__":
-    app.run(port=8080, host="127.0.0.1")
