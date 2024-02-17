@@ -1,1 +1,45 @@
+form.login_form {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 450px;
+    background-color: #ffcc00;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 10px;
+}
 
+.p1 {
+    background-color: lightgrey;
+    color: grey;
+}
+.p2 {
+    background-color: lightgreen;
+    color: green;
+}
+.p3 {
+    background-color: lightblue;
+    color: blue;
+}
+.p4 {
+    background-color: lightcoral;
+    color: yellow;
+}
+.p5 {
+    background-color: lightyellow;
+    color: cyan;
+}
+
+
+.s1 {
+    background-color: lightgreen;
+    color: darkgreen;
+}
+.s2 {
+    background-color: lightskyblue;
+}
+.s3 {
+    background-color: lightyellow;
+    color: darkslategray;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
