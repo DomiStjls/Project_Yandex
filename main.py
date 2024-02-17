@@ -1,4 +1,5 @@
 from flask import Flask, request, url_for
+import os
 
 app = Flask(__name__)
 
@@ -55,6 +56,71 @@ def index(planet_name):
   </body>
 </html>"""
 
+@app.route("/load_photo", methods=["POST", "GET"])
+def load_photo():
+    if request.method == "GET":
+        return """
+        <!doctype html>
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Варианты выбора</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    </head>
+        <html lang="en">
+    <body>
+    <link rel="stylesheet" href="../static/css/style.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        
+        <h2>Загрузка фотографии для участия в миссии.</h2>
+        <form class="photo" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="photo">Выберите файл</label>
+                <input type="file" class="form-control-file" id="photo" name="file">
+            </div>
+            <button type="submit" class="btn btn-primary">Отправить</button>
+        </form>
+            </body>
+        </html>
+        """
+
+    elif request.method == "POST":
+        file = request.files['file']
+        if file:
+            filename = file.filename
+            file.save(os.path.join("static/img", filename))
+        return f"""
+        <!doctype html>
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Варианты выбора</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    </head>
+        <html lang="en">
+    <body>
+    <link rel="stylesheet" href="../static/css/style.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        
+        <h2>Загрузка фотографии для участия в миссии.</h2>
+        <form class="photo" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="photo">Выберите файл</label>
+                <input type="file" class="form-control-file" id="photo" name="file">
+            </div>
+            <button type="submit" class="btn btn-primary">Отправить</button>
+            <img src='./static/img/{filename}'>
+        </form>
+        
+            </body>
+        </html>
+"""
 
 @app.route("/image_mars")
 def image_mars():
@@ -232,4 +298,3 @@ def form_sample():
         print(request.form["accept"])
         print(request.form["sex"])
         return "Форма отправлена"
-
