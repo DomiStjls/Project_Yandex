@@ -5,8 +5,7 @@ app = Flask(__name__)
 
 @app.route("/<title>")
 def index(title):
-    user = "Ученик"
-    return render_template("index.html", title=title, username=user)
+    return render_template("index.html", title=title)
 
 
 @app.route("/index")
