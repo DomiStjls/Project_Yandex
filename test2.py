@@ -12,3 +12,9 @@ def index(title):
 def index2():
     user = "Ученик"
     return render_template("index2.html", title="Дом", username=user)
+ 
+
+@app.route('/training/<prof>')
+def training(prof):
+    header = "Инженерные тренажеры" if ("инженер" in prof or "строитель" in prof) else "Научные симуляторы"
+    return render_template("training.html", header=header, prof=prof)
