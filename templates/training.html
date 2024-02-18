@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+    <h4 style="text-align: center; color: rgba(136, 136, 124, 0.493);">И на Марсе будут яблони цвести!</h4>
+    <h1 style="text-align: center;">{{header}}</h1>
+
+    {% if header == "Инженерные тренажеры" %}
+    <img style="margin:0px auto 0px auto; display: block;" src="https://swmodel.my1.ru/_ld/1/178.jpg" height="400" weight="600">
+    {% else %}
+    <img style="margin:0px auto 0px auto; display: block;" height="400" weight="600" src="https://pictures.pibig.info/uploads/posts/2023-04/1680353088_pictures-pibig-info-p-raskraska-sokol-tisyacheletiya-krasivo-75.jpg">
+    {% endif %}
+</div>
+{% endblock %}
+ 
