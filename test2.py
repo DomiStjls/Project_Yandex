@@ -14,7 +14,14 @@ def index2():
     return render_template("index2.html", title="Дом", username=user)
  
 
+
+@app.route('/list_prof/<h>')
+def profs(h):
+    p = ['Врач', "Строитель", "Инженер", "Летчик", "Космонавт", "Испытатель", "Пилот", "Повар", "Механик"]
+    return render_template("list_prof.html", h=h, p=p)
+
 @app.route('/training/<prof>')
 def training(prof):
     header = "Инженерные тренажеры" if ("инженер" in prof or "строитель" in prof) else "Научные симуляторы"
     return render_template("training.html", header=header, prof=prof)
+ 
