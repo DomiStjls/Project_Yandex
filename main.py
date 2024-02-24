@@ -83,7 +83,7 @@ def carousel():
 
 
 @app.route("/choice/<planet_name>")
-def index(planet_name):
+def index0(planet_name):
     return f"""
     <!doctype html>
 
