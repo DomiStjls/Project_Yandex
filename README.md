@@ -1,4 +1,4 @@
-<h2>Файл [main.py](https://github.com/DomiStjls/Project_Yandex/blob/main/main.py)</h2>
+<h2>Файл main.py</h2>
 
 Изображение Марса --- http://127.0.0.1:8080/image_mars
 
