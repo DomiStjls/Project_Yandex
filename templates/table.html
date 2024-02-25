@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h4 style="text-align: center; color: rgba(136, 136, 124, 0.493);">И на Марсе будут яблони цвести!</h4>
+<h2 style="text-align: center;">Оформление каюты</h2>
+<table style="text-align: center; margin: auto auto auto auto;">
+  <tr>
+    <td>Цвет стен</td>
+    <td>Эмблема</td>
+  </tr>
+  <tr>
+    <td><div style="height:400px; width:400px; background-color: {{c}};"></div></td>
+    <td><img style="height:400px;" src="{{ i }}" alt=""></img></td>
+  </tr>
+</table>
+{% endblock %}

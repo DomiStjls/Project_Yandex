@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+<h4 style="text-align: center; color: rgba(136, 136, 124, 0.493);">И на Марсе будут яблони цвести!</h4>
+<h1 style="text-align: center;">Размещение по каютам</h1>
+{% set list = s %}
+{% for el in list %}
+<p>{{ el }} - Каюта № {{ loop.index }} {% if loop.first %}- капитан корабля{% endif %}</p>
+{% endfor %}
+</div>
+{% endblock %}
