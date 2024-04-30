@@ -1,11 +1,12 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect
 import os
 
 app = Flask(__name__)
 
+photos = ['mars1.jpg', 'mars2.jpg', 'mars3.jpg', 'mars4.jpg']
 
 @app.route("/results/<nickname>/<int:level>/<float:rating>")
-def base(nickname,level,rating):
+def base(nickname, level, rating):
     return f"""
     <!doctype html>
 
@@ -29,9 +30,10 @@ def base(nickname,level,rating):
   </body>
 </html>"""
 
+
 @app.route("/carousel")
 def carousel():
-    return f"""
+    return """
     <!doctype html>
 
   <head>
@@ -81,7 +83,6 @@ def carousel():
 </html>"""
 
 
-
 @app.route("/choice/<planet_name>")
 def index0(planet_name):
     return f"""
@@ -107,6 +108,7 @@ def index0(planet_name):
     <p class='p4'>На ней есть магнитное поле.</p>
   </body>
 </html>"""
+
 
 @app.route("/load_photo", methods=["POST", "GET"])
 def load_photo():
@@ -140,7 +142,7 @@ def load_photo():
         """
 
     elif request.method == "POST":
-        file = request.files['file']
+        file = request.files["file"]
         if file:
             filename = file.filename
             file.save(os.path.join("static/img", filename))
@@ -174,6 +176,7 @@ def load_photo():
         </html>
 """
 
+
 @app.route("/image_mars")
 def image_mars():
     return """
@@ -199,6 +202,8 @@ def image_mars():
         </body>
         </html>
         """
+
+
 @app.route("/promotion_image")
 def promotion_image():
     return """
@@ -352,9 +357,6 @@ def form_sample():
         return "Форма отправлена"
 
 
-
-
-
 @app.route("/<title>")
 def index(title):
     return render_template("index.html", title=title)
@@ -364,16 +366,47 @@ def index(title):
 def index2():
     user = "Ученик"
     return render_template("index2.html", title="Дом", username=user)
- 
 
 
-@app.route('/list_prof/<h>')
+@app.route("/list_prof/<h>")
 def profs(h):
-    p = ['Врач', "Строитель", "Инженер", "Летчик", "Космонавт", "Испытатель", "Пилот", "Повар", "Механик"]
+    p = [
+        "Врач",
+        "Строитель",
+        "Инженер",
+        "Летчик",
+        "Космонавт",
+        "Испытатель",
+        "Пилот",
+        "Повар",
+        "Механик",
+    ]
     return render_template("list_prof.html", h=h, p=p)
 
-@app.route('/training/<prof>')
+
+@app.route("/training/<prof>")
 def training(prof):
-    header = "Инженерные тренажеры" if ("инженер" in prof or "строитель" in prof) else "Научные симуляторы"
+    header = (
+        "Инженерные тренажеры"
+        if ("инженер" in prof or "строитель" in prof)
+        else "Научные симуляторы"
+    )
     return render_template("training.html", header=header, prof=prof)
- 
+
+
+
+@app.route('/galery', methods=['POST', 'GET'])
+def galery():
+  global photos
+  return render_template("galery.html", photos=photos)
+
+@app.route('/upload', methods=['POST', 'GET'])
+def upload():
+  global photos
+  file = request.files["file"]
+  if file:
+      filename = file.filename
+      file.save(os.path.join("static/img", filename))
+  photos.append(file.filename)
+  
+  return redirect('/galery')
